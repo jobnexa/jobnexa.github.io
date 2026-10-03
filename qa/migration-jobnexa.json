@@ -1,0 +1,171 @@
+{
+  "checkedAt": "2026-10-03T15:48:56.456Z",
+  "siteUrl": "https://jobnexa.github.io/",
+  "status": "PASS",
+  "repository": {
+    "fullName": "jobnexa/jobnexa.github.io",
+    "id": 1402877164,
+    "organizationId": 337387745,
+    "verification": "Root verified same repository ID after transfer and rename through GitHub connector."
+  },
+  "preservedBaseline": {
+    "fileCount": 134,
+    "originalCommitCount": 3,
+    "lastPreMigrationMain": "7a81dfcfdc6bc4e792743fcd0b13d96d6696edf5",
+    "verification": "Root verified all 134 original files and 3 old commits preserved; first migration commit changes README/GUIDE/TASK_STATUS only."
+  },
+  "firstMigrationDeployment": {
+    "actionsRunId": 37134338261,
+    "actionsRunUrl": "https://github.com/jobnexa/jobnexa.github.io/actions/runs/37134338261",
+    "headSha": "4c3e712d217a3a0b5834a0a2c0516abc700fee11",
+    "status": "completed",
+    "conclusion": "success",
+    "verification": "Root verified GitHub Actions status and head."
+  },
+  "pagesSource": {
+    "value": "GitHub Actions",
+    "verification": "Root verified repository Pages source and https://jobnexa.github.io/ live URL in GitHub UI."
+  },
+  "variables": {
+    "environment": 0,
+    "repository": 0,
+    "organizationAvailable": 0,
+    "verification": "Root inspected GitHub UI Variables page: no environment/repository variables and no organization variables available."
+  },
+  "routeChecks": [
+    {
+      "name": "home",
+      "url": "https://jobnexa.github.io/",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/",
+      "contentType": "text/html; charset=utf-8",
+      "noOldOriginOrBase": true,
+      "noFixtureMarkers": true,
+      "lang": "en",
+      "workScout": true,
+      "canonical": "https://jobnexa.github.io/",
+      "internalReferenceCount": 13,
+      "internalReferencesUseRoot": true,
+      "embeddedJobCount": 0
+    },
+    {
+      "name": "jobs",
+      "url": "https://jobnexa.github.io/jobs/",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/jobs/",
+      "contentType": "text/html; charset=utf-8",
+      "noOldOriginOrBase": true,
+      "noFixtureMarkers": true,
+      "lang": "en",
+      "workScout": true,
+      "canonical": "https://jobnexa.github.io/jobs/",
+      "internalReferenceCount": 13,
+      "internalReferencesUseRoot": true,
+      "embeddedJobCount": 0
+    },
+    {
+      "name": "about",
+      "url": "https://jobnexa.github.io/about/",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/about/",
+      "contentType": "text/html; charset=utf-8",
+      "noOldOriginOrBase": true,
+      "noFixtureMarkers": true,
+      "lang": "en",
+      "workScout": true,
+      "canonical": "https://jobnexa.github.io/about/",
+      "internalReferenceCount": 13,
+      "internalReferencesUseRoot": true
+    },
+    {
+      "name": "disclaimer",
+      "url": "https://jobnexa.github.io/disclaimer/",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/disclaimer/",
+      "contentType": "text/html; charset=utf-8",
+      "noOldOriginOrBase": true,
+      "noFixtureMarkers": true,
+      "lang": "en",
+      "workScout": true,
+      "canonical": "https://jobnexa.github.io/disclaimer/",
+      "internalReferenceCount": 11,
+      "internalReferencesUseRoot": true
+    },
+    {
+      "name": "robots",
+      "url": "https://jobnexa.github.io/robots.txt",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/robots.txt",
+      "contentType": "text/plain; charset=utf-8",
+      "noOldOriginOrBase": true,
+      "noFixtureMarkers": true,
+      "sitemapUrl": "https://jobnexa.github.io/sitemap.xml",
+      "allowsRoot": true
+    },
+    {
+      "name": "sitemap",
+      "url": "https://jobnexa.github.io/sitemap.xml",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/sitemap.xml",
+      "contentType": "application/xml",
+      "noOldOriginOrBase": true,
+      "noFixtureMarkers": true,
+      "urls": [
+        "https://jobnexa.github.io/",
+        "https://jobnexa.github.io/jobs/",
+        "https://jobnexa.github.io/about/",
+        "https://jobnexa.github.io/disclaimer/"
+      ],
+      "exactPublicRoutes": true
+    },
+    {
+      "name": "search-index",
+      "url": "https://jobnexa.github.io/search-index.json",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/search-index.json",
+      "contentType": "application/json; charset=utf-8",
+      "noOldOriginOrBase": true,
+      "noFixtureMarkers": true,
+      "recordCount": 0,
+      "isEmptyArray": true
+    },
+    {
+      "name": "favicon",
+      "url": "https://jobnexa.github.io/favicon.svg",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/favicon.svg",
+      "contentType": "image/svg+xml",
+      "noOldOriginOrBase": true,
+      "noFixtureMarkers": true
+    }
+  ],
+  "assetChecks": [
+    {
+      "name": "asset",
+      "url": "https://jobnexa.github.io/_astro/BaseLayout.BZuWsBjx.css",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/_astro/BaseLayout.BZuWsBjx.css",
+      "contentType": "text/css; charset=utf-8",
+      "correctRootOrigin": true,
+      "noOldOriginOrBase": true
+    },
+    {
+      "name": "asset",
+      "url": "https://jobnexa.github.io/_astro/JobsView.astro_astro_type_script_index_0_lang.C43epyVX.js",
+      "status": 200,
+      "finalUrl": "https://jobnexa.github.io/_astro/JobsView.astro_astro_type_script_index_0_lang.C43epyVX.js",
+      "contentType": "application/javascript; charset=utf-8",
+      "correctRootOrigin": true,
+      "noOldOriginOrBase": true
+    }
+  ],
+  "errors": [],
+  "historicalReportPreserved": "qa/deployment.json",
+  "limits": [
+    "HTTP checks verify the published snapshot at checkedAt.",
+    "Repository history, baseline preservation, Pages source, variables, and Actions status are attributed to root verification; this script independently verifies live HTTP responses.",
+    "Browser layout and interactions are verified separately by root; no browser automation was run here.",
+    "The live production collection currently has zero real jobs and no sample listings; no employer vacancy or application destination was tested.",
+    "Future content changes and Actions runs require separate verification."
+  ]
+}

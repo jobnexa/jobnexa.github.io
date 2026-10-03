@@ -1,4 +1,17 @@
-# Báo cáo mới nhất — xuất bản WorkScout, 03/10/2026
+# Báo cáo mới nhất — chuyển sang jobnexa.github.io, 03/10/2026
+
+Website đã được dựng lại và xác minh tại https://jobnexa.github.io/. Repository hiện tại: https://github.com/jobnexa/jobnexa.github.io.
+
+- Repository ID 1402877164 và lịch sử Git được bảo toàn khi chuyển owner/đổi tên. Baseline trước cập nhật là commit 7a81dfcfdc6bc4e792743fcd0b13d96d6696edf5, cây b42b6f7a9b8c5bca324a0e2e8f7bae9b128763cd, đủ 134 file gốc. Không tải lại hoặc thay đổi nội dung ảnh/tin/test đã có.
+- Source Pages vẫn là GitHub Actions; UI xác nhận site live ở https://jobnexa.github.io/ và HTTPS bắt buộc. Environment/repository/organization không có biến ghi đè SITE_URL/BASE_PATH.
+- Commit cập nhật hướng dẫn 4c3e712d217a3a0b5834a0a2c0516abc700fee11 có đúng ba file README.md, HUONG_DAN_HANG_NGAY.md và TASK_STATUS.md. Workflow tự lấy origin mới và base / từ Pages.
+- Lần deploy cho domain mới: https://github.com/jobnexa/jobnexa.github.io/actions/runs/37134338261 — completed / success.
+- Build local với SITE_URL=https://jobnexa.github.io, BASE_PATH=/ thành công. 5 HTML tiếng Anh/WorkScout, 57 link/asset nội bộ tồn tại; canonical, sitemap và robots đúng domain gốc; không còn origin cũ hoặc /Job/ trong output.
+- Kiểm tra online: 8 route/artifact và 2 asset CSS/JS đều HTTP 200. Canonical, liên kết nội bộ, sitemap và robots đúng domain mới. Search index là []; không có route hay nội dung fixture. Browser xác nhận bảng chọn kỹ năng, navigation ở root và trạng thái 0 jobs.
+- Bằng chứng: migration-jobnexa.json, jobnexa-live.png, jobnexa-pages.png. Báo cáo deployment.json và ảnh cũ được giữ làm lịch sử.
+- Hướng dẫn thao tác hằng ngày đã cập nhật link repository mới. Thương hiệu vẫn là WorkScout, giao diện công khai chỉ tiếng Anh. Chưa có tin tuyển dụng thật nên chưa thử nút Apply hoặc recommendation với dữ liệu thật trên domain mới.
+
+## Lịch sử — xuất bản WorkScout tại địa chỉ cũ, 03/10/2026
 
 Website đã hoạt động tại https://ducdungeth.github.io/Job/. Mã nguồn và tài liệu ở https://github.com/ducdungeth/Job. Chủ website xác nhận dùng địa chỉ này với thương hiệu WorkScout.
 
