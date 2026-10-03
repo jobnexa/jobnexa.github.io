@@ -1,8 +1,22 @@
 # TASK_STATUS
 
-Cập nhật mới nhất: 03/10/2026 — hoàn thành yêu cầu thiết kế lại theo ảnh tham chiếu, giao diện chỉ tiếng Anh và chọn kỹ năng → Recommended. Production build thành công. Chưa deploy online.
+Cập nhật mới nhất: 03/10/2026 — WorkScout đã xuất bản tại https://ducdungeth.github.io/Job/. Repository: https://github.com/ducdungeth/Job. Pages dùng GitHub Actions; lần triển khai đầu tiên thành công.
 
-## Kết quả thiết kế lại
+## Xuất bản WorkScout
+
+- Đã tải 131 file mã nguồn, tài liệu, template, fixture và bằng chứng QA lên main; đối chiếu Git blob SHA với từng file trên máy, không có sai lệch byte. Không tải node_modules, dist, cache, file .env hay bản sao QA tạm.
+- Đổi thương hiệu công khai thành WorkScout, biểu tượng W. Giao diện và nội dung hệ thống chỉ dùng tiếng Anh.
+- Đã lưu Settings → Pages → Source → GitHub Actions bằng phiên đăng nhập của chủ repository. GitHub xác nhận site live tại địa chỉ trên.
+- Lần triển khai đầu tiên: https://github.com/ducdungeth/Job/actions/runs/37131081418 — completed / success, commit f3338abb82000f4920a7357f9f0a431d313132ec.
+- Kiểm tra trước xuất bản: Astro check 40 files, 0 errors/warnings/hints; 16/16 content/recommendation tests PASS; production build đúng /Job/ thành công. 57 link/asset nội bộ trong output tồn tại; canonical, robots và sitemap đúng domain.
+- Browser online xác nhận WorkScout, bảng chọn kỹ năng khi truy cập, toàn bộ giao diện tiếng Anh và trạng thái 0 jobs trung thực. Tin mẫu không được xuất bản.
+- Hướng dẫn thao tác hằng ngày: HUONG_DAN_HANG_NGAY.md; mẫu gọn: templates/job-simple.md. Thêm/sửa/ẩn/xóa qua trình duyệt GitHub, commit vào main tự chạy kiểm tra và deploy.
+- Bằng chứng online: qa/deployment.json, qa/screenshots/workscout-live.png và qa/screenshots/github-pages-settings.png.
+- Bản local main theo dõi origin/main. Commit local ban đầu được giữ trong codex/local-initial-import; tải lên qua GitHub plugin vì Git trên máy chưa đăng nhập.
+
+Production hiện có 0 tin tuyển dụng thật. Cần thêm tin đã xác minh và kỹ năng tương ứng để người xem có kỹ năng để chọn và nhận gợi ý.
+
+## Kết quả thiết kế lại trước xuất bản
 
 - A — GPT-6.1 Sol/high: schema skills/openings, chuẩn hóa kỹ năng, thuật toán gợi ý, lưu lựa chọn trong trình duyệt, bộ lọc/URL/tab/bàn phím, tests — DONE.
 - B — GPT-6 Sol/medium: dashboard chung cho home/jobs, bảng chọn kỹ năng, thẻ trắng viền tím nhạt, Apply, responsive 3/2/1 cột — DONE.

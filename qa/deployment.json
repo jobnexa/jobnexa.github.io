@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-10-03T14:54:19.138Z",
+  "siteUrl": "https://ducdungeth.github.io/Job/",
+  "status": "PASS",
+  "firstDeployment": {
+    "actionsRunId": 37131081418,
+    "actionsRunUrl": "https://github.com/ducdungeth/Job/actions/runs/37131081418",
+    "headSha": "f3338abb82000f4920a7357f9f0a431d313132ec",
+    "status": "completed",
+    "conclusion": "success",
+    "verification": "Run status and head supplied by root after GitHub verification."
+  },
+  "pagesSource": {
+    "value": "GitHub Actions",
+    "verification": "Root verified repository Pages source in the GitHub UI."
+  },
+  "routeChecks": [
+    {
+      "name": "home",
+      "url": "https://ducdungeth.github.io/Job/",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/",
+      "contentType": "text/html; charset=utf-8",
+      "lang": "en",
+      "workScout": true,
+      "canonical": "https://ducdungeth.github.io/Job/",
+      "internalReferenceCount": 13,
+      "internalReferencesUseBase": true,
+      "noFixtureMarkers": true
+    },
+    {
+      "name": "jobs",
+      "url": "https://ducdungeth.github.io/Job/jobs/",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/jobs/",
+      "contentType": "text/html; charset=utf-8",
+      "lang": "en",
+      "workScout": true,
+      "canonical": "https://ducdungeth.github.io/Job/jobs/",
+      "internalReferenceCount": 13,
+      "internalReferencesUseBase": true,
+      "noFixtureMarkers": true
+    },
+    {
+      "name": "about",
+      "url": "https://ducdungeth.github.io/Job/about/",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/about/",
+      "contentType": "text/html; charset=utf-8",
+      "lang": "en",
+      "workScout": true,
+      "canonical": "https://ducdungeth.github.io/Job/about/",
+      "internalReferenceCount": 13,
+      "internalReferencesUseBase": true,
+      "noFixtureMarkers": true
+    },
+    {
+      "name": "disclaimer",
+      "url": "https://ducdungeth.github.io/Job/disclaimer/",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/disclaimer/",
+      "contentType": "text/html; charset=utf-8",
+      "lang": "en",
+      "workScout": true,
+      "canonical": "https://ducdungeth.github.io/Job/disclaimer/",
+      "internalReferenceCount": 11,
+      "internalReferencesUseBase": true,
+      "noFixtureMarkers": true
+    },
+    {
+      "name": "robots",
+      "url": "https://ducdungeth.github.io/Job/robots.txt",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/robots.txt",
+      "contentType": "text/plain; charset=utf-8",
+      "sitemapUrl": "https://ducdungeth.github.io/Job/sitemap.xml",
+      "allowsBase": true
+    },
+    {
+      "name": "sitemap",
+      "url": "https://ducdungeth.github.io/Job/sitemap.xml",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/sitemap.xml",
+      "contentType": "application/xml",
+      "urls": [
+        "https://ducdungeth.github.io/Job/",
+        "https://ducdungeth.github.io/Job/jobs/",
+        "https://ducdungeth.github.io/Job/about/",
+        "https://ducdungeth.github.io/Job/disclaimer/"
+      ],
+      "exactPublicRoutes": true
+    },
+    {
+      "name": "search-index",
+      "url": "https://ducdungeth.github.io/Job/search-index.json",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/search-index.json",
+      "contentType": "application/json; charset=utf-8",
+      "recordCount": 0,
+      "isEmptyArray": true
+    },
+    {
+      "name": "favicon",
+      "url": "https://ducdungeth.github.io/Job/favicon.svg",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/favicon.svg",
+      "contentType": "image/svg+xml"
+    }
+  ],
+  "assetChecks": [
+    {
+      "name": "asset",
+      "url": "https://ducdungeth.github.io/Job/_astro/BaseLayout.BZuWsBjx.css",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/_astro/BaseLayout.BZuWsBjx.css",
+      "contentType": "text/css; charset=utf-8",
+      "correctBase": true
+    },
+    {
+      "name": "asset",
+      "url": "https://ducdungeth.github.io/Job/_astro/JobsView.astro_astro_type_script_index_0_lang.C43epyVX.js",
+      "status": 200,
+      "finalUrl": "https://ducdungeth.github.io/Job/_astro/JobsView.astro_astro_type_script_index_0_lang.C43epyVX.js",
+      "contentType": "application/javascript; charset=utf-8",
+      "correctBase": true
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "HTTP checks verify the published snapshot at checkedAt.",
+    "Browser layout and interactions are verified separately by root; this report does not run browser automation.",
+    "The live production collection currently contains zero real jobs; no employer vacancy or outbound application was tested.",
+    "The project robots.txt is under /Job/; domain-root robots policy is outside this project.",
+    "Future content changes and Actions runs require separate verification."
+  ]
+}

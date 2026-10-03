@@ -1,4 +1,15 @@
-# Báo cáo mới nhất — thiết kế lại SkillMatch, 03/10/2026
+# Báo cáo mới nhất — xuất bản WorkScout, 03/10/2026
+
+Website đã hoạt động tại https://ducdungeth.github.io/Job/. Mã nguồn và tài liệu ở https://github.com/ducdungeth/Job. Chủ website xác nhận dùng địa chỉ này với thương hiệu WorkScout.
+
+- Pages Source đã lưu thành GitHub Actions; UI xác nhận site live, HTTPS bắt buộc trên domain mặc định.
+- Lần deploy đầu tiên: https://github.com/ducdungeth/Job/actions/runs/37131081418, trạng thái completed / success, commit f3338abb82000f4920a7357f9f0a431d313132ec.
+- 131 file ban đầu được đối chiếu Git blob SHA với byte trên máy trước cập nhật nhánh main: không có sai lệch. File tạm, dependency/cache và .env không được upload.
+- Sau đổi thương hiệu: check 40 files không có errors/warnings/hints; 16/16 tests PASS; build production /Job/ thành công. 5 HTML dùng lang=en; 57 link/asset nội bộ đúng base và tồn tại; canonical/sitemap/robots đúng origin; search-index là [].
+- Browser live xác nhận logo W/WorkScout, giao diện tiếng Anh, bảng chọn kỹ năng khi truy cập và trạng thái trống trung thực. Chưa có tin thật nên chưa thể thử recommendation với dữ liệu thật trên website online; hành vi gợi ý đã được kiểm tra bằng fixture ở bản local bên dưới.
+- Bằng chứng: deployment.json, screenshots/workscout-live.png, screenshots/github-pages-settings.png. Hướng dẫn browser-only cho owner: ../HUONG_DAN_HANG_NGAY.md, ../templates/job-simple.md.
+
+## Lịch sử — thiết kế lại SkillMatch trước xuất bản, 03/10/2026
 
 Yêu cầu hoàn thành: giao diện theo ảnh mẫu, website chỉ tiếng Anh, người dùng chọn kỹ năng khi lần đầu truy cập rồi nhận gợi ý ở Recommended. Home và Jobs dùng cùng dashboard; trang chi tiết và trang thông tin dùng cùng hệ màu. Chưa deploy online, chưa có tin tuyển dụng thật.
 
