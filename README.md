@@ -1,6 +1,6 @@
 # WorkScout
 
-**Cách đăng/gỡ tin đơn giản trên GitHub:** [Hướng dẫn hằng ngày](HUONG_DAN_HANG_NGAY.md). Website: [https://ducdungeth.github.io/Job/](https://ducdungeth.github.io/Job/).
+**Cách đăng/gỡ tin đơn giản trên GitHub:** [Hướng dẫn hằng ngày](HUONG_DAN_HANG_NGAY.md). Website: [https://jobnexa.github.io/](https://jobnexa.github.io/).
 
 Website giới thiệu việc làm được chủ website chọn và đăng thủ công. Người xem đọc thông tin rồi ứng tuyển tại website nguồn. **Một việc làm = một file Markdown.** Không có scraping, import tự động, database, CMS, tài khoản hay nơi nhận hồ sơ.
 
@@ -135,19 +135,19 @@ Build bắt buộc kiểm định nội dung và xuất website tĩnh vào `dist
 
 Website được chuẩn bị cho GitHub Pages. Không cần hosting server, CMS hoặc khóa API. Bạn cần repository GitHub và quyền bật Pages; việc kết nối lần đầu không tự xảy ra khi chỉ chạy local.
 
-1. Tạo repository GitHub và đưa project lên đó bằng Git hoặc GitHub Desktop. Không đưa node_modules/dist vào Git. Nếu chưa quen Git, GitHub Desktop hỗ trợ chọn thay đổi, viết commit message và Push origin.
-2. Trong repository chọn Settings → Pages → Source: GitHub Actions.
+1. Mở repository [jobnexa/jobnexa.github.io](https://github.com/jobnexa/jobnexa.github.io). Không đưa node_modules/dist vào Git.
+2. Trong repository, kiểm tra Settings → Pages → Source: GitHub Actions.
 3. Dùng nhánh `main` theo workflow mặc định; nếu dùng tên khác thì chỉnh cấu hình workflow một lần.
 4. Push thay đổi; theo dõi workflow ở Actions. Validation, tests và build phải thành công trước khi upload/deploy.
 5. Mở URL Pages trong kết quả deploy, kiểm tra homepage, jobs và trang chi tiết. Build local thành công không đồng nghĩa đã deploy online.
 
-WorkScout dùng địa chỉ project site `https://ducdungeth.github.io/Job/`. Workflow/config phải dùng origin `https://ducdungeth.github.io` và base path `/Job/`. Domain riêng cần thiết lập DNS/Pages và cấu hình URL tương ứng một lần.
+WorkScout dùng địa chỉ gốc `https://jobnexa.github.io/`. Workflow/config phải dùng origin `https://jobnexa.github.io` và base path `/`.
 
-Cấu hình URL dùng `SITE_URL` (origin) và `BASE_PATH` (tiền tố đường dẫn). Để thử local với tiền tố giống project site trong PowerShell:
+Cấu hình URL dùng `SITE_URL` (origin) và `BASE_PATH` (tiền tố đường dẫn). Để thử local với địa chỉ website trong PowerShell:
 
 ```powershell
-$env:SITE_URL = "https://ducdungeth.github.io"
-$env:BASE_PATH = "/Job/"
+$env:SITE_URL = "https://jobnexa.github.io"
+$env:BASE_PATH = "/"
 npm run build
 npm run preview
 ```
@@ -163,9 +163,9 @@ Không bật `INCLUDE_SAMPLES` khi build production; build sẽ từ chối. Ch�
 
 Workflow chạy khi push main hoặc bấm Run workflow; pull request chỉ kiểm tra. Không có scheduled scraper/rebuild, không dùng agent khi đăng tin thường ngày. Nếu validation/build thất bại, sửa file được báo rồi push lại; bản online trước đó tiếp tục hoạt động.
 
-Repository là [ducdungeth/Job](https://github.com/ducdungeth/Job). Với công việc đăng/gỡ tin thường ngày, làm trực tiếp trên GitHub theo [hướng dẫn hằng ngày](HUONG_DAN_HANG_NGAY.md). Workflow tự đọc URL Pages đã cấu hình; nếu cần ghi đè, đặt repository variables `SITE_URL` và `BASE_PATH` trong Settings → Secrets and variables → Actions → Variables. Chỉ cần cấu hình một lần.
+Repository là [jobnexa/jobnexa.github.io](https://github.com/jobnexa/jobnexa.github.io). Với công việc đăng/gỡ tin thường ngày, làm trực tiếp trên GitHub theo [hướng dẫn hằng ngày](HUONG_DAN_HANG_NGAY.md). Workflow tự đọc URL Pages đã cấu hình; nếu cần ghi đè, đặt repository variables `SITE_URL` và `BASE_PATH` trong Settings → Secrets and variables → Actions → Variables. Chỉ cần cấu hình một lần.
 
-Robots đặt trong project subpath không thể thay robots.txt cấp domain của GitHub Pages. Sitemap vẫn phải có URL đúng project path.
+Ở địa chỉ gốc này, `robots.txt` và sitemap nằm ngay dưới `https://jobnexa.github.io/`.
 
 ## Kiểm tra và bằng chứng
 

@@ -1,8 +1,19 @@
 # TASK_STATUS
 
-Cập nhật mới nhất: 03/10/2026 — WorkScout đã xuất bản tại https://ducdungeth.github.io/Job/. Repository: https://github.com/ducdungeth/Job. Pages dùng GitHub Actions; lần triển khai đầu tiên thành công.
+Cập nhật mới nhất: 03/10/2026 — Dự án chuyển sang repository https://github.com/jobnexa/jobnexa.github.io, địa chỉ xuất bản https://jobnexa.github.io/. Pages dùng GitHub Actions. Kết quả xác minh domain mới nằm trong qa/migration-jobnexa.json và đầu qa/REPORT.md.
 
-## Xuất bản WorkScout
+## Chuyển sang jobnexa.github.io
+
+- Repository ID 1402877164 được giữ nguyên sau chuyển owner và đổi tên; main trước cập nhật có commit 7a81dfcfdc6bc4e792743fcd0b13d96d6696edf5, cây b42b6f7a9b8c5bca324a0e2e8f7bae9b128763cd và đủ 134 file. Không mất mã nguồn, tài liệu, mẫu, ảnh QA hoặc lịch sử phiên bản.
+- Local origin đã đổi sang https://github.com/jobnexa/jobnexa.github.io.git. Thư mục làm việc vẫn là D:\Refers.
+- Địa chỉ mới là organization site ở root: SITE_URL=https://jobnexa.github.io, BASE_PATH=/. Workflow lấy origin/base từ cấu hình Pages.
+- UI GitHub xác nhận Source GitHub Actions; không có biến environment/repository/organization ghi đè origin hoặc base path.
+- Build local cho domain mới thành công: 5 HTML tiếng Anh, 57 link/asset nội bộ đúng root và tồn tại; canonical, sitemap, robots đúng https://jobnexa.github.io/.
+- README và hướng dẫn hằng ngày đã cập nhật toàn bộ link thao tác sang repository mới. Mẫu tin và cách thêm/sửa/ẩn/xóa trên GitHub không thay đổi.
+- Thương hiệu hiển thị là WorkScout. Production vẫn có 0 tin thật; không xuất bản fixture hoặc tin mẫu.
+- Bằng chứng domain mới: qa/migration-jobnexa.json, qa/jobnexa-live.png và qa/jobnexa-pages.png. Các kết quả bên dưới là lịch sử website trước khi chuyển domain.
+
+## Lịch sử — xuất bản WorkScout tại địa chỉ cũ
 
 - Đã tải 131 file mã nguồn, tài liệu, template, fixture và bằng chứng QA lên main; đối chiếu Git blob SHA với từng file trên máy, không có sai lệch byte. Không tải node_modules, dist, cache, file .env hay bản sao QA tạm.
 - Đổi thương hiệu công khai thành WorkScout, biểu tượng W. Giao diện và nội dung hệ thống chỉ dùng tiếng Anh.
