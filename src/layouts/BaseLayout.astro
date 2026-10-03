@@ -1,0 +1,42 @@
+---
+import Header from '../components/ui/Header.astro';
+import Footer from '../components/ui/Footer.astro';
+import SeoHead from '../components/seo/SeoHead.astro';
+import '../styles/global.css';
+import { withBase } from '../lib/urls';
+import { SITE_DESCRIPTION } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+  sampleMode?: boolean;
+}
+const { title, description = SITE_DESCRIPTION, canonicalPath, noindex = false, sampleMode = false } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f4ff" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <SeoHead title={title} description={description} canonicalPath={canonicalPath} noindex={noindex || sampleMode} />
+    <slot name="head" />
+    <noscript><style>.theme-label { display: none !important; }</style></noscript>
+    <script is:inline>
+      try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (_) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    {sampleMode && <div class="sample-banner" role="status">SAMPLE PREVIEW — DEMO JOBS, NOT LIVE OPENINGS</div>}
+    <Header />
+    <main id="main-content"><slot /></main>
+    <Footer />
+    <script>
+      import '../scripts/theme';
+    </script>
+  </body>
+</html>

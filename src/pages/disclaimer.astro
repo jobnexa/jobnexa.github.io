@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_NAME } from '../lib/site';
+import { sampleMode } from '../lib/content/collection';
+---
+<BaseLayout title={`Disclaimer | ${SITE_NAME}`} description="Check job details and the original source before applying. Listings may change or expire." canonicalPath="/disclaimer/" sampleMode={sampleMode} noindex={sampleMode}>
+  <article class="container prose information-page">
+    <p class="eyebrow">DISCLAIMER</p>
+    <h1>Check the source before applying.</h1>
+    <p>Job details can change after publication. A listing on this site does not guarantee that the employer is still accepting applications.</p>
+    <h2>Verify the details</h2>
+    <p>Read the latest posting on the original website. Check the requirements, benefits, and employer identity before sharing personal information.</p>
+    <h2>Applications and external links</h2>
+    <p>Applications take place on the linked website provided by the site owner. External websites have their own terms and privacy practices.</p>
+    <h2>No application fees</h2>
+    <p>This site does not charge an application fee or accept resumes. “Featured” is a display choice; paid placements are labeled “Sponsored.”</p>
+    <h2>Expired listings</h2>
+    <p>Static pages reflect the most recent site update. Confirm an opening’s current status on the original website.</p>
+  </article>
+</BaseLayout>

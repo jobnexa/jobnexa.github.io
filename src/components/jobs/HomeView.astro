@@ -1,0 +1,7 @@
+---
+import type { Job } from '../../lib/content/schema';
+import JobsView from './JobsView.astro';
+interface Props { jobs: Job[]; }
+const { jobs } = Astro.props;
+---
+<JobsView jobs={jobs} home />

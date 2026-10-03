@@ -1,0 +1,76 @@
+{
+  "startedAt": "2026-10-03T13:43:55.297Z",
+  "scratch": "D:\\Refers\\qa\\tmp\\owner-1791035035132",
+  "fixtureNotice": "SAMPLE DEVELOPMENT DATA, isolated only, never deployed",
+  "steps": [
+    {
+      "label": "add-from-template",
+      "exitCode": 0,
+      "log": "qa/build-logs/01-add-from-template.log"
+    },
+    {
+      "label": "change-apply-url",
+      "exitCode": 0,
+      "log": "qa/build-logs/02-change-apply-url.log"
+    },
+    {
+      "label": "draft-hidden",
+      "exitCode": 0,
+      "log": "qa/build-logs/03-draft-hidden.log"
+    },
+    {
+      "label": "restore-active",
+      "exitCode": 0,
+      "log": "qa/build-logs/04-restore-active.log"
+    },
+    {
+      "label": "explicit-expired",
+      "exitCode": 0,
+      "log": "qa/build-logs/05-explicit-expired.log"
+    },
+    {
+      "label": "date-expired",
+      "exitCode": 0,
+      "log": "qa/build-logs/06-date-expired.log"
+    },
+    {
+      "label": "expiry-today-active",
+      "exitCode": 0,
+      "log": "qa/build-logs/07-expiry-today-active.log"
+    },
+    {
+      "label": "archived-hidden",
+      "exitCode": 0,
+      "log": "qa/build-logs/08-archived-hidden.log"
+    },
+    {
+      "label": "delete-hidden",
+      "exitCode": 0,
+      "log": "qa/build-logs/09-delete-hidden.log"
+    },
+    {
+      "label": "sample-excluded",
+      "exitCode": 0,
+      "log": "qa/build-logs/10-sample-excluded.log"
+    },
+    {
+      "label": "invalid-content-blocked",
+      "exitCode": 1,
+      "log": "qa/build-logs/11-invalid-content-blocked.log"
+    },
+    {
+      "label": "sample-flag-production-blocked",
+      "exitCode": 1,
+      "log": "qa/build-logs/12-sample-flag-production-blocked.log"
+    },
+    {
+      "label": "subpath-public-artifact",
+      "exitCode": 0,
+      "log": "qa/build-logs/13-subpath-public-artifact.log"
+    }
+  ],
+  "finishedAt": "2026-10-03T13:45:16.018Z",
+  "status": "PASS",
+  "today": "2026-10-03",
+  "base": "/ten-repo/"
+}

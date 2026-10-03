@@ -1,0 +1,42 @@
+---
+import type { Job } from '../../lib/content/schema';
+import type { PublicationState } from '../../lib/content/policy';
+import { withBase } from '../../lib/urls';
+import { getJobSkills } from '../../lib/content/recommendations';
+import { initials, formatDate, formatSalary, outboundHost } from './format';
+
+interface Props { job: Job; state: PublicationState; }
+const { job, state } = Astro.props;
+const salary = formatSalary(job.data);
+const host = outboundHost(job.data.applyUrl);
+const expired = state === 'expired';
+const outboundRel = job.data.sponsored ? 'noopener noreferrer sponsored' : 'noopener noreferrer';
+const skills = getJobSkills(job.data);
+const explicitSkills = job.data.skills.length > 0;
+---
+<div class="container detail-shell" data-detail-expiration={job.data.expirationDate}>
+  <article>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href={withBase('/')}>Home</a><span aria-hidden="true">/</span><a href={withBase('/jobs/')}>Jobs</a><span aria-hidden="true">/</span><span aria-current="page">{job.data.title}</span></nav>
+    <header class="detail-head">
+      {expired && <div class="expired-notice">This listing has expired. Check the original source for the latest information.</div>}
+      {!expired && <div class="expired-notice" data-expired-notice hidden>This listing has expired. Check the original source for the latest information.</div>}
+      <span class="eyebrow">{job.data.category}</span>
+      <h1 class="display">{job.data.title}</h1>
+      <div class="detail-company"><span class="company-mark" aria-hidden="true">{initials(job.data.company)}</span><span>{job.data.company}</span></div>
+      <div class="detail-facts"><span>⌖ {job.data.location}</span><span>◷ {job.data.workType}</span><span>◇ {job.data.employmentType}</span><span>Posted <time datetime={job.data.publishedDate}>{formatDate(job.data.publishedDate)}</time></span></div>
+      {job.data.sponsored && <p><span class="chip chip-sponsored">Sponsored</span></p>}
+    </header>
+    <div class="detail-prose"><slot /></div>
+    {skills.length > 0 && <section class="detail-skills" aria-label={explicitSkills ? 'Required skills' : 'Skills and tags'}><h2>{explicitSkills ? 'Required skills' : 'Skills & tags'}</h2><div class="detail-tags">{skills.map((skill) => <span class="chip chip-neutral">{skill}</span>)}</div></section>}
+    {explicitSkills && job.data.tags.length > 0 && <div class="detail-tags" aria-label="Job tags">{job.data.tags.map((tag) => <span class="chip chip-neutral">{tag}</span>)}</div>}
+  </article>
+  <aside class="detail-sidebar" aria-label="Job information and application link">
+    <h2>Job details</h2>
+    <dl><dt>Company</dt><dd>{job.data.company}</dd><dt>Location</dt><dd>{job.data.location}</dd><dt>Workplace</dt><dd>{job.data.workType}</dd><dt>Employment</dt><dd>{job.data.employmentType}</dd>{job.data.openings !== undefined && <><dt>Openings</dt><dd>{job.data.openings}</dd></>}{salary && <><dt>Salary</dt><dd>{salary}</dd></>}<dt>Source</dt><dd><a class="text-link" href={job.data.sourceUrl} target="_blank" rel={outboundRel}>{job.data.sourceName} <span class="sr-only">(opens in a new tab)</span></a></dd></dl>
+    {!expired && <a class="button button-primary" data-apply-cta href={job.data.applyUrl} target="_blank" rel={outboundRel}>Apply <span aria-hidden="true">↗</span><span class="sr-only">for {job.data.title} at {job.data.company}. Opens {host} in a new tab.</span></a>}
+    {!expired && <p class="source-note" data-apply-host>Opens <strong>{host}</strong> in a new tab. Apply directly on the original website.</p>}
+    {!expired && <p class="source-note" data-expired-source-note hidden>The application link is no longer available here. Check the original source.</p>}
+    {expired && <p class="source-note">The application link is no longer available here. Check the original source.</p>}
+  </aside>
+</div>
+<script>import '../../scripts/expiry';</script>

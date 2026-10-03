@@ -1,0 +1,26 @@
+---
+import { withBase } from '../../lib/urls';
+import { SITE_NAME } from '../../lib/site';
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={withBase('/')} aria-label={`${SITE_NAME} home`}>
+      <span class="brand-mark" aria-hidden="true">W</span><span>{SITE_NAME}</span>
+    </a>
+    <div class="header-actions">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href={withBase('/')} aria-current={path === withBase('/') ? 'page' : undefined}>Home</a>
+        <a href={withBase('/jobs/')} aria-current={path.includes('/jobs/') ? 'page' : undefined}>Find jobs</a>
+        <a href={withBase('/about/')} aria-current={path.includes('/about/') ? 'page' : undefined}>About</a>
+      </nav>
+      <label class="theme-label"><span>Theme</span>
+        <select class="theme-select" data-theme-select aria-label="Color theme">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeView from '../components/jobs/HomeView.astro';
+import { getActiveJobs, sampleMode } from '../lib/content/collection';
+import { SITE_NAME, SITE_DESCRIPTION } from '../lib/site';
+const jobs = await getActiveJobs();
+---
+<BaseLayout title={SITE_NAME} description={SITE_DESCRIPTION} canonicalPath="/" sampleMode={sampleMode} noindex={sampleMode}>
+  <HomeView jobs={jobs} />
+</BaseLayout>

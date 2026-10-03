@@ -1,0 +1,68 @@
+---
+import type { Job } from '../../lib/content/schema';
+import { toSearchRecord } from '../../lib/content/search';
+import { getJobSkills, normalizeSkills } from '../../lib/content/recommendations';
+import { withBase } from '../../lib/urls';
+import JobCard from './JobCard.astro';
+
+interface Props { jobs: Job[]; home?: boolean; }
+const { jobs, home = false } = Astro.props;
+const sorted = [...jobs].sort((a, b) => b.data.publishedDate.localeCompare(a.data.publishedDate) || a.id.localeCompare(b.id));
+const records = sorted.map(toSearchRecord);
+const facets = (key: 'category' | 'location' | 'company' | 'workType') => [...new Set(sorted.map((job) => job.data[key]))].sort((a, b) => a.localeCompare(b, 'en'));
+const skills = normalizeSkills(sorted.flatMap((job) => getJobSkills(job.data))).sort((a, b) => a.localeCompare(b, 'en'));
+const json = JSON.stringify(records).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
+---
+<div class="dashboard container">
+  <header class="dashboard-head">
+    <div>
+      <p class="dashboard-eyebrow">YOUR NEXT OPPORTUNITY</p>
+      <h1>{home ? 'Find work that fits your skills' : 'Find your next role'}</h1>
+      <p class="dashboard-intro">Discover opportunities, compare skills, and apply directly at the source.</p>
+    </div>
+    <button class="button button-outline skills-edit" id="skills-edit" type="button">Choose skills</button>
+  </header>
+
+  <section class="skills-chooser" id="skills-chooser" aria-labelledby="skills-chooser-title" tabindex="-1" hidden>
+    <div class="skills-chooser-heading"><div><p class="dashboard-eyebrow">PERSONALIZE YOUR VIEW</p><h2 id="skills-chooser-title">What skills do you bring?</h2><p>Choose the skills you have. Recommended jobs will match them to skills or tags listed for each role.</p></div></div>
+    {skills.length > 0 ? <>
+      <fieldset class="skills-options"><legend class="sr-only">Your skills</legend>{skills.map((skill) => <label class="skill-option"><input type="checkbox" name="skill" value={skill} /><span>{skill}</span></label>)}</fieldset>
+      <div class="skills-chooser-actions"><button class="button button-primary" id="skills-save" type="button">Show recommendations</button><button class="button button-plain" id="skills-cancel" type="button">View all jobs</button></div>
+    </> : <><p class="skills-unavailable">No job skills have been listed yet. You can still browse every active job below.</p><div class="skills-chooser-actions"><button class="button button-plain" id="skills-cancel" type="button">View all jobs</button></div></>}
+  </section>
+
+  <div class="dashboard-tabs" role="tablist" aria-label="Job views">
+    <button type="button" role="tab" id="tab-recommended" data-jobs-tab="recommended" aria-controls="jobs-panel" aria-selected="false" tabindex="-1">Recommended</button>
+    <button type="button" role="tab" id="tab-all" data-jobs-tab="all" aria-controls="jobs-panel" aria-selected="true" tabindex="0">All active jobs</button>
+  </div>
+  <noscript><p class="no-js-note">The full job list is available below. Enable JavaScript to choose skills, rank recommendations, and filter results.</p></noscript>
+
+  <div id="jobs-panel" role="tabpanel" aria-labelledby="tab-all">
+    <div class="dashboard-toolbar">
+      <div><h2 class="results-count" id="results-heading" aria-live="polite" aria-atomic="true"><span id="result-number">{jobs.length}</span> {jobs.length === 1 ? 'job' : 'jobs'}</h2><p id="recommendation-summary" class="recommendation-summary" aria-live="polite">Browse every active role. Applications open on the source website.</p></div>
+      <label class="sort-wrap" for="sort-jobs">Sort by
+        <select id="sort-jobs" name="sort" form="job-filter-form"><option value="newest">Newest</option><option value="oldest">Oldest</option><option value="title">Title A–Z</option></select>
+      </label>
+    </div>
+    <details class="filters-drawer">
+      <summary>Search &amp; filters</summary>
+      <form id="job-filter-form" action={withBase('/jobs/')} method="get" role="search">
+        <div class="filter-fields">
+          <div class="field field-keyword"><label for="filter-q">Keyword</label><input id="filter-q" name="q" type="search" placeholder="Title, company or skill" autocomplete="off" /></div>
+          <div class="field"><label for="filter-category">Category</label><select id="filter-category" name="category"><option value="">All categories</option>{facets('category').map((value) => <option value={value}>{value}</option>)}</select></div>
+          <div class="field"><label for="filter-location">Location</label><select id="filter-location" name="location"><option value="">All locations</option>{facets('location').map((value) => <option value={value}>{value}</option>)}</select></div>
+          <div class="field"><label for="filter-workType">Work type</label><select id="filter-workType" name="workType"><option value="">All work types</option>{facets('workType').map((value) => <option value={value}>{value}</option>)}</select></div>
+          <div class="field"><label for="filter-company">Company</label><select id="filter-company" name="company"><option value="">All companies</option>{facets('company').map((value) => <option value={value}>{value}</option>)}</select></div>
+          <div class="field"><label for="filter-date">Posted</label><select id="filter-date" name="date"><option value="">Any time</option><option value="today">Today</option><option value="7">Past 7 days</option><option value="30">Past 30 days</option></select></div>
+        </div>
+        <div class="filter-actions"><button class="button button-primary" type="submit">Apply filters</button><button class="button button-outline" id="reset-filters" type="button">Clear all</button></div>
+        <noscript><p class="filter-noscript">Enable JavaScript to filter and rank jobs. The full list remains readable below.</p></noscript>
+      </form>
+    </details>
+
+    <div class="listing-grid" id="job-results">{sorted.map((job) => <JobCard job={job} headingLevel="h3" />)}</div>
+    <div class="empty-state" id="no-results" hidden={jobs.length > 0}><h3>{jobs.length > 0 ? 'No matching jobs' : 'No jobs posted yet'}</h3><p>{jobs.length > 0 ? 'Try another keyword or clear some filters.' : 'When the site owner publishes jobs, they will appear here.'}</p>{jobs.length > 0 && <div class="empty-actions"><button class="button button-outline" id="empty-reset" type="button">Clear all filters</button><button class="button button-outline" id="empty-edit-skills" type="button">Edit skills</button><button class="button button-plain" id="empty-view-all" type="button">View all jobs</button></div>}</div>
+  </div>
+</div>
+<script id="job-search-data" type="application/json" set:html={json} is:inline />
+<script>import '../../scripts/jobs';</script>

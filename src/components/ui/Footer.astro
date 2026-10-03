@@ -1,0 +1,25 @@
+---
+import { withBase } from '../../lib/urls';
+import { SITE_NAME } from '../../lib/site';
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">{SITE_NAME}</div>
+        <p class="footer-copy">Explore hand-curated opportunities. Check the original listing before applying.</p>
+      </div>
+      <div class="footer-links">
+        <h2>Explore</h2>
+        <a href={withBase('/jobs/')}>All jobs</a>
+        <a href={`${withBase('/jobs/')}?workType=Remote`}>Remote jobs</a>
+      </div>
+      <div class="footer-links">
+        <h2>Information</h2>
+        <a href={withBase('/about/')}>About</a>
+        <a href={withBase('/disclaimer/')}>Disclaimer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© {new Date().getFullYear()} {SITE_NAME}. Apply on the original website.</div>
+  </div>
+</footer>

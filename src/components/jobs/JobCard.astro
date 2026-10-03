@@ -1,0 +1,39 @@
+---
+import type { Job } from '../../lib/content/schema';
+import { withBase } from '../../lib/urls';
+import { getJobSkills } from '../../lib/content/recommendations';
+import { formatDate, formatSalary, outboundHost } from './format';
+
+interface Props { job: Job; headingLevel?: 'h2' | 'h3'; }
+const { job, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+const skills = getJobSkills(job.data);
+const skillsLabel = job.data.skills?.length ? 'Required skills' : 'Skills & tags';
+const shownSkills = skills.slice(0, 3);
+const moreSkills = skills.slice(3);
+const salary = formatSalary(job.data);
+const applyHost = outboundHost(job.data.applyUrl);
+const rel = job.data.sponsored ? 'noopener noreferrer sponsored' : 'noopener noreferrer';
+---
+<article class="job-card" data-expiration-date={job.data.expirationDate} data-job-id={job.id}>
+  <div class="job-card-body">
+    <div class="job-card-kicker">
+      <time class="job-date" datetime={job.data.publishedDate}>{formatDate(job.data.publishedDate)}</time>
+      {job.data.sponsored && <span class="card-sponsored">Sponsored</span>}
+      {!job.data.sponsored && job.data.featured && <span class="card-featured">Featured</span>}
+    </div>
+    <Heading class="job-card-title"><a href={withBase(`/jobs/${job.id}/`)}>{job.data.title}</a></Heading>
+    <p class="job-card-company">{job.data.company}{job.data.location !== job.data.workType && <> <span aria-hidden="true">·</span> {job.data.location}</>} <span aria-hidden="true">·</span> {job.data.workType}</p>
+    {job.data.openings !== undefined && <p class="job-card-openings">{job.data.openings} {job.data.openings === 1 ? 'opening' : 'openings'}</p>}
+    <div class="job-card-skills">
+      <span class="job-card-label">{skillsLabel}</span>
+      {skills.length > 0 ? <div class="skill-chip-row">
+        {shownSkills.map((skill) => <span class="skill-chip">{skill}</span>)}
+        {moreSkills.length > 0 && <details class="skills-overflow"><summary aria-label={`Show ${moreSkills.length} more skills or tags`}>+{moreSkills.length}</summary><div class="skills-overflow-list">{moreSkills.map((skill) => <span class="skill-chip">{skill}</span>)}</div></details>}
+      </div> : <span class="job-card-no-skills">No skills listed</span>}
+    </div>
+    {salary && <p class="job-card-pay"><span>Pay:</span> <strong>{salary}</strong></p>}
+    <span class="match-badge" data-skill-match hidden></span>
+  </div>
+  <a class="job-card-apply" href={job.data.applyUrl} target="_blank" rel={rel}>Apply <span class="sr-only">for {job.data.title} at {job.data.company}. Opens {applyHost} in a new tab.</span></a>
+</article>

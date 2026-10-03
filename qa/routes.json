@@ -1,0 +1,131 @@
+{
+  "checkedAt": "2026-10-03T13:54:52.902Z",
+  "status": "PASS",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:4325/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/jobs/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/about/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/disclaimer/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/404.html",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/robots.txt",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/sitemap.xml",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/search-index.json",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/favicon.svg",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/_astro/BaseLayout.BZuWsBjx.css",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4325/_astro/JobsView.astro_astro_type_script_index_0_lang.C43epyVX.js",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/jobs/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/about/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/disclaimer/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/404.html",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/robots.txt",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/sitemap.xml",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/search-index.json",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/jobs/owner-test/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/jobs/expired-test/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/favicon.svg",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/_astro/BaseLayout.BApZAh2m.css",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/_astro/JobsView.astro_astro_type_script_index_0_lang.Bnwy48X2.js",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "url": "http://127.0.0.1:4323/ten-repo/_astro/JobDetailView.astro_astro_type_script_index_0_lang.DHv0NSSw.js",
+      "status": 200,
+      "pass": true
+    }
+  ]
+}

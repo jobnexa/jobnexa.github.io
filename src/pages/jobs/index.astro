@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JobsView from '../../components/jobs/JobsView.astro';
+import { getActiveJobs, sampleMode } from '../../lib/content/collection';
+import { SITE_NAME } from '../../lib/site';
+const jobs = await getActiveJobs();
+---
+<BaseLayout title={`Find jobs | ${SITE_NAME}`} description="Search and filter hand-curated jobs by category, location, work type, and company. Apply on the original website." canonicalPath="/jobs/" sampleMode={sampleMode} noindex={sampleMode}>
+  <JobsView jobs={jobs} />
+</BaseLayout>

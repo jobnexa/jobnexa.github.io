@@ -1,0 +1,35 @@
+{
+  "name": "workscout",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.19.0 <25"
+  },
+  "scripts": {
+    "dev": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "dev:samples": "cross-env ASTRO_TELEMETRY_DISABLED=1 INCLUDE_SAMPLES=1 astro dev",
+    "validate-jobs": "tsx scripts/validate-jobs.ts",
+    "check": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "test": "tsx --test tests/content/*.test.ts",
+    "test:owner": "node tests/e2e/owner-workflow.mjs",
+    "build": "npm run validate-jobs && cross-env ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro preview"
+  },
+  "dependencies": {
+    "astro": "7.3.5",
+    "gray-matter": "4.0.3",
+    "remark-gfm": "4.0.1",
+    "remark-parse": "11.0.0",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.1.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@types/node": "26.6.4",
+    "cross-env": "10.1.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

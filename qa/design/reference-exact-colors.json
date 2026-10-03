@@ -1,0 +1,85 @@
+{
+  "method": "Exact RGB pixel frequency; complements perceptually merged clusters",
+  "palette": [
+    {
+      "hex": "#ffffff",
+      "pixels": 813087,
+      "coverage": 0.5894600167032049
+    },
+    {
+      "hex": "#f5f4f8",
+      "pixels": 269104,
+      "coverage": 0.19509111366298965
+    },
+    {
+      "hex": "#eff1ff",
+      "pixels": 173765,
+      "coverage": 0.125973628655276
+    },
+    {
+      "hex": "#e1e3f9",
+      "pixels": 66708,
+      "coverage": 0.04836099801649441
+    },
+    {
+      "hex": "#d9d9e7",
+      "pixels": 5880,
+      "coverage": 0.004262797090858475
+    },
+    {
+      "hex": "#dee3ff",
+      "pixels": 2986,
+      "coverage": 0.002164746958044797
+    },
+    {
+      "hex": "#fcfcfc",
+      "pixels": 2472,
+      "coverage": 0.0017921146953405018
+    },
+    {
+      "hex": "#3444da",
+      "pixels": 1645,
+      "coverage": 0.0011925682337520734
+    },
+    {
+      "hex": "#2a2b2f",
+      "pixels": 1268,
+      "coverage": 0.000919256243402814
+    },
+    {
+      "hex": "#efccff",
+      "pixels": 754,
+      "coverage": 0.0005466239806985188
+    },
+    {
+      "hex": "#e4ac78",
+      "pixels": 494,
+      "coverage": 0.0003581329528714433
+    },
+    {
+      "hex": "#91c9ff",
+      "pixels": 485,
+      "coverage": 0.00035160826344665994
+    },
+    {
+      "hex": "#ffc997",
+      "pixels": 469,
+      "coverage": 0.0003400088155803784
+    },
+    {
+      "hex": "#e4ffff",
+      "pixels": 408,
+      "coverage": 0.0002957859205901799
+    },
+    {
+      "hex": "#70ace5",
+      "pixels": 399,
+      "coverage": 0.0002892612311653965
+    },
+    {
+      "hex": "#5590cb",
+      "pixels": 394,
+      "coverage": 0.00028563640370718354
+    }
+  ]
+}

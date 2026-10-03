@@ -1,0 +1,141 @@
+{
+  "implementation": "D:\\Refers\\qa\\screenshots\\redesign-desktop.png",
+  "reference": "D:\\Refers\\qa\\design\\reference-dna.json",
+  "measurement": {
+    "k": 8
+  },
+  "entries": [
+    {
+      "specHex": "#f9f9fd",
+      "role": "background",
+      "nearestImageHex": "#fafafc",
+      "deltaE": 1.06,
+      "specCoverage": 0.9777,
+      "imageCoverage": 0.9624
+    },
+    {
+      "specHex": "#96c4eb",
+      "role": "unassigned",
+      "nearestImageHex": "#bbbcc7",
+      "deltaE": 19.99,
+      "specCoverage": 0.0043,
+      "imageCoverage": 0.0069
+    },
+    {
+      "specHex": "#efc798",
+      "role": "unassigned",
+      "nearestImageHex": "#fafafc",
+      "deltaE": 34.5,
+      "specCoverage": 0.0037,
+      "imageCoverage": 0
+    },
+    {
+      "specHex": "#79708f",
+      "role": "unassigned",
+      "nearestImageHex": "#696874",
+      "deltaE": 12.41,
+      "specCoverage": 0.0036,
+      "imageCoverage": 0.0112
+    },
+    {
+      "specHex": "#4166cf",
+      "role": "accent",
+      "nearestImageHex": "#474fbe",
+      "deltaE": 11.85,
+      "specCoverage": 0.0035,
+      "imageCoverage": 0.0022
+    },
+    {
+      "specHex": "#b57b55",
+      "role": "unassigned",
+      "nearestImageHex": "#91929b",
+      "deltaE": 38.78,
+      "specCoverage": 0.0028,
+      "imageCoverage": 0
+    },
+    {
+      "specHex": "#413033",
+      "role": "unassigned",
+      "nearestImageHex": "#27282d",
+      "deltaE": 10.4,
+      "specCoverage": 0.0027,
+      "imageCoverage": 0.0174
+    },
+    {
+      "specHex": "#42456e",
+      "role": "unassigned",
+      "nearestImageHex": "#474752",
+      "deltaE": 19.11,
+      "specCoverage": 0.0017,
+      "imageCoverage": 0
+    }
+  ],
+  "implementationClusters": [
+    {
+      "imageHex": "#fafafc",
+      "imageCoverage": 0.9004,
+      "nearestSpecHex": "#f9f9fd",
+      "nearestSpecRole": "background",
+      "deltaE": 1.06
+    },
+    {
+      "imageHex": "#e2e5f6",
+      "imageCoverage": 0.062,
+      "nearestSpecHex": "#f9f9fd",
+      "nearestSpecRole": "background",
+      "deltaE": 9.67
+    },
+    {
+      "imageHex": "#27282d",
+      "imageCoverage": 0.0108,
+      "nearestSpecHex": "#413033",
+      "nearestSpecRole": "unassigned",
+      "deltaE": 10.4
+    },
+    {
+      "imageHex": "#bbbcc7",
+      "imageCoverage": 0.0069,
+      "nearestSpecHex": "#96c4eb",
+      "nearestSpecRole": "unassigned",
+      "deltaE": 19.99
+    },
+    {
+      "imageHex": "#474752",
+      "imageCoverage": 0.0066,
+      "nearestSpecHex": "#413033",
+      "nearestSpecRole": "unassigned",
+      "deltaE": 12.89
+    },
+    {
+      "imageHex": "#91929b",
+      "imageCoverage": 0.0058,
+      "nearestSpecHex": "#79708f",
+      "nearestSpecRole": "unassigned",
+      "deltaE": 18.08
+    },
+    {
+      "imageHex": "#696874",
+      "imageCoverage": 0.0054,
+      "nearestSpecHex": "#79708f",
+      "nearestSpecRole": "unassigned",
+      "deltaE": 12.41
+    },
+    {
+      "imageHex": "#474fbe",
+      "imageCoverage": 0.0022,
+      "nearestSpecHex": "#4166cf",
+      "nearestSpecRole": "accent",
+      "deltaE": 11.85
+    }
+  ],
+  "meanDeltaE": 2.09,
+  "maxDeltaE": 19.99,
+  "coverageDrift": 0.0497,
+  "thresholds": {
+    "meanDeltaE": 5,
+    "maxDeltaE": 20,
+    "coverageDrift": 0.35,
+    "significantCoverage": 0.005
+  },
+  "pass": true
+}

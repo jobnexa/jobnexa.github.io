@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_NAME } from '../lib/site';
+import { sampleMode } from '../lib/content/collection';
+import { withBase } from '../lib/urls';
+---
+<BaseLayout title={`About | ${SITE_NAME}`} description={`Learn how ${SITE_NAME} curates job listings and links you to the original application page.`} canonicalPath="/about/" sampleMode={sampleMode} noindex={sampleMode}>
+  <article class="container prose information-page">
+    <p class="eyebrow">ABOUT US</p>
+    <h1>A simpler way to explore jobs.</h1>
+    <p>{SITE_NAME} brings together opportunities selected and published manually by the site owner. Each listing links to its original source so you can check the details before applying.</p>
+    <h2>Carefully added listings</h2>
+    <p>The site owner adds and updates each listing, including its description and application link.</p>
+    <h2>Apply at the source</h2>
+    <p>The “Apply” button opens the original application website. {SITE_NAME} does not accept applications or require an account.</p>
+    <p>Check the posting date, requirements, and employer details at the source. <a href={withBase('/disclaimer/')}>Read the disclaimer</a>.</p>
+    <a class="button" href={withBase('/jobs/')}>Browse jobs</a>
+  </article>
+</BaseLayout>

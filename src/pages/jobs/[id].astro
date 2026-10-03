@@ -1,0 +1,20 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JobDetailView from '../../components/jobs/JobDetailView.astro';
+import { getPublicEntries, entryToJob, sampleMode } from '../../lib/content/collection';
+import { getPublicationState } from '../../lib/content/policy';
+import { markdownPlainText } from '../../lib/content/markdown';
+import { SITE_NAME } from '../../lib/site';
+export async function getStaticPaths() {
+  return (await getPublicEntries()).map(entry => ({ params: { id: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const job = entryToJob(entry);
+const state = getPublicationState(job, undefined, { allowSamples: sampleMode });
+const { Content } = await render(entry);
+const description = job.data.summary ?? markdownPlainText(job.body).slice(0, 160);
+---
+<BaseLayout title={`${job.data.title} — ${job.data.company} | ${SITE_NAME}`} description={description} canonicalPath={`/jobs/${job.id}/`} sampleMode={sampleMode} noindex={sampleMode || state === 'expired'}>
+  <JobDetailView job={job} state={state}><Content /></JobDetailView>
+</BaseLayout>
