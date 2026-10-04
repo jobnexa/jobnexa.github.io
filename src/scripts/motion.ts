@@ -85,9 +85,9 @@ document.addEventListener('click', event => {
   const bounds = control.getBoundingClientRect();
   const x = event.detail ? event.clientX - bounds.left : bounds.width / 2;
   const y = event.detail ? event.clientY - bounds.top : bounds.height / 2;
-  const ripple = document.createElement('span');
+  const ripple = document.createElement('i');
   ripple.className = 'click-ripple';
-  const rippleContainer = document.createElement('span');
+  const rippleContainer = document.createElement('i');
   rippleContainer.className = 'click-ripple-container';
   rippleContainer.setAttribute('aria-hidden', 'true');
   ripple.style.setProperty('--ripple-x', `${x}px`);
