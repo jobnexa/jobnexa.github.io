@@ -15,12 +15,13 @@ const json = JSON.stringify(records).replace(/</g, '\\u003c').replace(/>/g, '\\u
 ---
 <div class="dashboard container">
   <header class="dashboard-head">
-    <div>
+    <div class="dashboard-head-content">
       <p class="dashboard-eyebrow">YOUR NEXT OPPORTUNITY</p>
-      <h1>{home ? 'Find work that fits your skills' : 'Find your next role'}</h1>
+      <h1>{home ? <>Find work that <span>fits your skills</span></> : <>Find your <span>next role</span></>}</h1>
       <p class="dashboard-intro">Discover opportunities, compare skills, and apply directly at the source.</p>
+      <button class="button button-outline skills-edit" id="skills-edit" type="button">Choose skills</button>
     </div>
-    <button class="button button-outline skills-edit" id="skills-edit" type="button">Choose skills</button>
+    <div class="hero-orbit" aria-hidden="true"><span class="orbit-one"></span><span class="orbit-two"></span><span class="orbit-core"></span><span class="orbit-spark orbit-spark-one"></span><span class="orbit-spark orbit-spark-two"></span></div>
   </header>
 
   <section class="skills-chooser" id="skills-chooser" aria-labelledby="skills-chooser-title" tabindex="-1" hidden>
