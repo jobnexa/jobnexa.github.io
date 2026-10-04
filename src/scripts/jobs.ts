@@ -67,13 +67,16 @@ if (form && dataNode && resultList && numberNode && noResults) {
     for (const input of skillInputs) input.checked = selected.has(skillKey(input.value));
   }
 
-  function openChooser() {
+  function openChooser(moveFocus = true) {
     if (!chooser) return;
     previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     syncSkillInputs();
     chooser.hidden = false;
     editSkills?.setAttribute('aria-expanded', 'true');
-    chooser.focus();
+    if (moveFocus) {
+      chooser.focus({ preventScroll: true });
+      chooser.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+    }
   }
 
   function closeChooser(returnFocus = true) {
@@ -225,8 +228,8 @@ if (form && dataNode && resultList && numberNode && noResults) {
   }
   document.querySelector('#reset-filters')?.addEventListener('click', reset);
   document.querySelector('#empty-reset')?.addEventListener('click', reset);
-  editSkills?.addEventListener('click', openChooser);
-  emptyEditSkills?.addEventListener('click', openChooser);
+  editSkills?.addEventListener('click', () => openChooser());
+  emptyEditSkills?.addEventListener('click', () => openChooser());
   emptyViewAll?.addEventListener('click', () => {
     view = 'all'; apply();
     tabs.find(tab => tab.dataset.jobsTab === 'all')?.focus();
@@ -262,5 +265,6 @@ if (form && dataNode && resultList && numberNode && noResults) {
   syncSkillInputs();
   restore();
   render();
-  if (!returningVisitor || selectionNeedsUpdate) openChooser();
+  // Prepare first-time skill selection below the hero without scrolling past the welcome screen.
+  if (!returningVisitor || selectionNeedsUpdate) openChooser(!document.querySelector('.dashboard-home'));
 }
