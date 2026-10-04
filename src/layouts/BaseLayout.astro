@@ -4,6 +4,7 @@ import Footer from '../components/ui/Footer.astro';
 import NewsletterDialog from '../components/ui/NewsletterDialog.astro';
 import SeoHead from '../components/seo/SeoHead.astro';
 import '../styles/global.css';
+import '../styles/motion.css';
 import { withBase } from '../lib/urls';
 import { SITE_DESCRIPTION } from '../lib/site';
 
@@ -31,14 +32,19 @@ const { title, description = SITE_DESCRIPTION, canonicalPath, noindex = false, s
     </script>
   </head>
   <body>
+    <div class="scroll-progress" data-scroll-progress aria-hidden="true" hidden></div>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     {sampleMode && <div class="sample-banner" role="status">SAMPLE PREVIEW — DEMO JOBS, NOT LIVE OPENINGS</div>}
     <Header />
     <main id="main-content"><slot /></main>
     <Footer />
+    <button class="back-to-top" data-back-to-top type="button" aria-label="Back to top" title="Back to top" tabindex="-1" hidden>
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true"><path d="m6 12 6-6 6 6M12 6v13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </button>
     <NewsletterDialog />
     <script>
       import '../scripts/theme';
+      import '../scripts/motion';
     </script>
   </body>
 </html>
