@@ -4,6 +4,20 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const progress = document.querySelector<HTMLElement>('[data-scroll-progress]');
 const backToTop = document.querySelector<HTMLButtonElement>('[data-back-to-top]');
 const orbit = document.querySelector<HTMLElement>('.hero-orbit');
+const briefcase = document.querySelector<HTMLElement>('.hero-briefcase');
+const siteHeader = document.querySelector<HTMLElement>('.site-header');
+function measureHeader() {
+  if (siteHeader) document.documentElement.style.setProperty('--site-header-height', `${siteHeader.getBoundingClientRect().height}px`);
+}
+measureHeader();
+if (siteHeader && 'ResizeObserver' in window) new ResizeObserver(measureHeader).observe(siteHeader);
+for (const link of document.querySelectorAll<HTMLAnchorElement>('.landing-browse, .hero-scroll-cue')) {
+  link.addEventListener('click', event => {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.defaultPrevented) return;
+    // The native hash link handles scrolling and history, including without JavaScript.
+    document.querySelector<HTMLElement>('#opportunities')?.focus({ preventScroll: true });
+  });
+}
 const revealTargets = [...document.querySelectorAll<HTMLElement>([
   '.skills-chooser', '.dashboard-tabs', '.dashboard-toolbar', '.filters-drawer',
   '.job-card', '.empty-state', '.footer-grid > div', '.footer-bottom',
@@ -61,12 +75,13 @@ function updateScroll() {
   if (backToTop) backToTop.tabIndex = showBackToTop ? 0 : -1;
   // Move only the decorative artwork, never the page or its text.
   orbit?.style.setProperty('--orbit-scroll', reducedMotion.matches ? '0px' : `${Math.min(window.scrollY * .06, 28)}px`);
+  briefcase?.style.setProperty('--briefcase-scroll', reducedMotion.matches ? '0px' : `${Math.min(window.scrollY * .08, 40)}px`);
 }
 function scheduleScroll() {
   if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScroll);
 }
 window.addEventListener('scroll', scheduleScroll, { passive: true });
-window.addEventListener('resize', scheduleScroll, { passive: true });
+window.addEventListener('resize', () => { measureHeader(); scheduleScroll(); }, { passive: true });
 if ('ResizeObserver' in window) new ResizeObserver(scheduleScroll).observe(document.body);
 progress?.removeAttribute('hidden');
 backToTop?.removeAttribute('hidden');
