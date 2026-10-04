@@ -1,4 +1,4 @@
-# WorkScout
+# JobNexa
 
 **Cách đăng/gỡ tin đơn giản trên GitHub:** [Hướng dẫn hằng ngày](HUONG_DAN_HANG_NGAY.md). Website: [https://jobnexa.github.io/](https://jobnexa.github.io/).
 
@@ -141,7 +141,7 @@ Website được chuẩn bị cho GitHub Pages. Không cần hosting server, CMS
 4. Push thay đổi; theo dõi workflow ở Actions. Validation, tests và build phải thành công trước khi upload/deploy.
 5. Mở URL Pages trong kết quả deploy, kiểm tra homepage, jobs và trang chi tiết. Build local thành công không đồng nghĩa đã deploy online.
 
-WorkScout dùng địa chỉ gốc `https://jobnexa.github.io/`. Workflow/config phải dùng origin `https://jobnexa.github.io` và base path `/`.
+JobNexa dùng địa chỉ gốc `https://jobnexa.github.io/`. Workflow/config phải dùng origin `https://jobnexa.github.io` và base path `/`.
 
 Cấu hình URL dùng `SITE_URL` (origin) và `BASE_PATH` (tiền tố đường dẫn). Để thử local với địa chỉ website trong PowerShell:
 
@@ -152,7 +152,7 @@ npm run build
 npm run preview
 ```
 
-Các giá trị trên là địa chỉ đã chọn cho WorkScout. Khi quay lại chế độ local ở root, xóa hai biến trong terminal:
+Các giá trị trên là địa chỉ đã chọn cho JobNexa. Khi quay lại chế độ local ở root, xóa hai biến trong terminal:
 
 ```powershell
 Remove-Item Env:SITE_URL -ErrorAction SilentlyContinue
@@ -180,3 +180,7 @@ Tên website và phần giới thiệu mặc định nằm trong `src/lib/site.t
 ### Dependency audit
 
 Kết quả audit khi bàn giao còn cảnh báo high từ dependency gián tiếp `http-cache-semantics` được Astro dùng. Bản phát hành kiểm tra chưa có bản vá phù hợp; không tự downgrade toàn bộ Astro theo `npm audit fix --force`. Website xuất file tĩnh, không chạy backend cache theo tài khoản. Xem `qa/dependency-audit.json` và báo cáo QA; cập nhật dependency có kiểm thử khi có bản vá.
+
+## Đăng ký thông báo email
+
+Nút **Sign Up** và hộp chào đầu phiên sử dụng chung một biểu mẫu email. Hiện chưa kết nối dịch vụ: không lưu/gửi email và không báo đăng ký thành công. Để kết nối endpoint biểu mẫu HTTPS công khai và hiểu bước gửi newsletter riêng, xem [hướng dẫn kết nối email](HUONG_DAN_KET_NOI_EMAIL.md).

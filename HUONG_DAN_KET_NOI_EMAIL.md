@@ -1,0 +1,20 @@
+# Kết nối ô đăng ký email JobNexa
+
+**Hiện chưa có dịch vụ email nào được kết nối.** Ô đăng ký trên JobNexa chỉ là giao diện chờ kết nối; website GitHub Pages không có máy chủ riêng để lưu địa chỉ. Khi chưa đặt URL biểu mẫu, nút gửi sẽ ở trạng thái không hoạt động và **không có email nào được lưu**.
+
+## Cách đơn giản: dùng Formspree để nhận địa chỉ
+
+1. Tạo tài khoản và biểu mẫu mới trên [Formspree](https://formspree.io/). Xác minh địa chỉ email chủ tài khoản theo hướng dẫn của họ. Trong mục **Integration** của biểu mẫu, sao chép **form endpoint** dạng `https://formspree.io/f/ma-bieu-mau` ([hướng dẫn chính thức](https://help.formspree.io/articles/building-your-form/building-an-html-form)). Đây là địa chỉ **công khai để gửi biểu mẫu**, không phải API key.
+2. Tại [repository JobNexa](https://github.com/jobnexa/jobnexa.github.io), mở **Settings → Secrets and variables → Actions → Variables → New repository variable**. Điền **Name:** `NEWSLETTER_FORM_URL`; **Value:** endpoint HTTPS vừa sao chép. Bấm **Add variable** ([hướng dẫn GitHub](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables)).
+3. Mở [Actions](https://github.com/jobnexa/jobnexa.github.io/actions) → **Validate and deploy GitHub Pages** → **Run workflow**, chọn `main` rồi chạy. Chờ cả bước build và deploy thành công. Workflow đưa biến trên vào bản build dưới tên `PUBLIC_NEWSLETTER_FORM_URL`; URL này sẽ hiện trong mã trang vì trình duyệt phải gửi biểu mẫu đến đó. **Không đặt API key, mật khẩu hoặc token vào biến này.** ([Cách chạy workflow thủ công](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow))
+4. Mở [website](https://jobnexa.github.io/), nhập **địa chỉ email của chính bạn**, đánh dấu ô đồng ý nhận thông tin việc làm rồi bấm gửi. Website mở tab mới và gửi biểu mẫu HTML bằng `POST` tới Formspree với trường `email` và `consent=job-updates`. Kiểm tra thông báo/hoàn tất trên tab đó và kiểm tra bản ghi trong Formspree. Nếu bạn bật thông báo cho chủ biểu mẫu, kiểm tra cả hộp thư nhận thông báo. Formspree nhận và lưu phản hồi; xác nhận hiển thị do Formspree xử lý. ([Trường `email` của Formspree](https://help.formspree.io/articles/building-your-form/special-fields))
+
+Nếu nút vẫn không hoạt động, kiểm tra tên biến viết đúng, URL bắt đầu bằng `https://`, workflow đã deploy thành công và bạn đã tải lại website. Nếu tab mới báo lỗi, kiểm tra endpoint trong mục **Integration** và thử gửi ngay bằng biểu mẫu mẫu của Formspree trước.
+
+**Formspree không tự gửi bản tin việc làm định kỳ.** Nó giúp nhận địa chỉ và có thể báo cho chủ biểu mẫu khi có người gửi. Tính năng trả lời tự động, nếu dùng, chỉ là email xác nhận/đáp lại một lần và có điều kiện gói dịch vụ; đây không phải hệ thống phát bản tin công việc ([tài liệu Auto Response](https://help.formspree.io/articles/plugins/sending-a-confirmation-or-response-email)). Muốn gửi thông báo việc làm, bạn còn phải chọn và thiết lập dịch vụ gửi newsletter, danh sách người nhận, nội dung gửi, quy trình đồng ý/huỷ đăng ký phù hợp.
+
+## Nếu muốn dùng Brevo hoặc Mailchimp
+
+[Brevo](https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo) và [Mailchimp](https://mailchimp.com/help/create-a-hosted-signup-form/) có biểu mẫu đăng ký do họ lưu trữ và công cụ danh sách email. Bạn có thể dùng liên kết biểu mẫu do họ cung cấp như một trang đăng ký riêng. **Đừng dán liên kết trang biểu mẫu đó vào `NEWSLETTER_FORM_URL`:** ô hiện tại gửi `POST` với hai trường `email` và `consent=job-updates`, còn biểu mẫu của mỗi dịch vụ có thể cần action, tên trường, mã danh sách và bước xác nhận khác. Để giữ người dùng trong giao diện JobNexa, cần điều chỉnh biểu mẫu theo mã tích hợp hiện hành của dịch vụ rồi thử đăng ký thật; [Mailchimp nêu rõ yêu cầu về action và tên trường](https://mailchimp.com/en/help/host-your-own-signup-forms/).
+
+Không gửi email thử của người khác khi chưa được họ đồng ý. Bạn có thể xóa `NEWSLETTER_FORM_URL` khỏi Variables và chạy lại workflow để đưa nút về trạng thái chờ kết nối.
