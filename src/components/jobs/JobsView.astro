@@ -4,6 +4,7 @@ import { toSearchRecord } from '../../lib/content/search';
 import { getJobSkills, normalizeSkills } from '../../lib/content/recommendations';
 import { withBase } from '../../lib/urls';
 import JobCard from './JobCard.astro';
+import BriefcaseArtwork from '../ui/BriefcaseArtwork.astro';
 
 interface Props { jobs: Job[]; home?: boolean; }
 const { jobs, home = false } = Astro.props;
@@ -13,17 +14,24 @@ const facets = (key: 'category' | 'location' | 'company' | 'workType') => [...ne
 const skills = normalizeSkills(sorted.flatMap((job) => getJobSkills(job.data))).sort((a, b) => a.localeCompare(b, 'en'));
 const json = JSON.stringify(records).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
 ---
-<div class="dashboard container">
+<div class:list={['dashboard', 'container', { 'dashboard-home': home }]}>
   <header class="dashboard-head">
+    <div class:list={{ 'landing-hero-inner': home, container: home }}>
     <div class="dashboard-head-content">
       <p class="dashboard-eyebrow">YOUR NEXT OPPORTUNITY</p>
       <h1>{home ? <>Find work that <span>fits your skills</span></> : <>Find your <span>next role</span></>}</h1>
       <p class="dashboard-intro">Discover opportunities, compare skills, and apply directly at the source.</p>
-      <button class="button button-outline skills-edit" id="skills-edit" type="button">Choose skills</button>
+      <div class:list={{ 'hero-actions': home }}>
+        <button class="button button-outline skills-edit" id="skills-edit" type="button">Choose skills</button>
+        {home && <a class="button landing-browse" href="#opportunities">Browse jobs <span aria-hidden="true">↗</span></a>}
+      </div>
     </div>
-    <div class="hero-orbit" aria-hidden="true"><span class="orbit-one"></span><span class="orbit-two"></span><span class="orbit-core"></span><span class="orbit-spark orbit-spark-one"></span><span class="orbit-spark orbit-spark-two"></span></div>
+    <div class="hero-briefcase" aria-hidden="true"><BriefcaseArtwork /></div>
+    </div>
+    {home && <a class="hero-scroll-cue" href="#opportunities"><span>Scroll to explore</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true"><path d="M12 4v15m-6-6 6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>}
   </header>
 
+  <section class:list={{ 'job-discovery': home, container: home }} id="opportunities" aria-label="Explore job opportunities" tabindex="-1">
   <section class="skills-chooser" id="skills-chooser" aria-labelledby="skills-chooser-title" tabindex="-1" hidden>
     <div class="skills-chooser-heading"><div><p class="dashboard-eyebrow">PERSONALIZE YOUR VIEW</p><h2 id="skills-chooser-title">What skills do you bring?</h2><p>Choose the skills you have. Recommended jobs will match them to skills or tags listed for each role.</p></div></div>
     {skills.length > 0 ? <>
@@ -64,6 +72,7 @@ const json = JSON.stringify(records).replace(/</g, '\\u003c').replace(/>/g, '\\u
     <div class="listing-grid" id="job-results">{sorted.map((job) => <JobCard job={job} headingLevel="h3" />)}</div>
     <div class="empty-state" id="no-results" hidden={jobs.length > 0}><h3>{jobs.length > 0 ? 'No matching jobs' : 'No jobs posted yet'}</h3><p>{jobs.length > 0 ? 'Try another keyword or clear some filters.' : 'When the site owner publishes jobs, they will appear here.'}</p>{jobs.length > 0 && <div class="empty-actions"><button class="button button-outline" id="empty-reset" type="button">Clear all filters</button><button class="button button-outline" id="empty-edit-skills" type="button">Edit skills</button><button class="button button-plain" id="empty-view-all" type="button">View all jobs</button></div>}</div>
   </div>
+  </section>
 </div>
 <script id="job-search-data" type="application/json" set:html={json} is:inline />
 <script>import '../../scripts/jobs';</script>
