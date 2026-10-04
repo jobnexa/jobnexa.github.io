@@ -1,6 +1,7 @@
 ---
 import Header from '../components/ui/Header.astro';
 import Footer from '../components/ui/Footer.astro';
+import NewsletterDialog from '../components/ui/NewsletterDialog.astro';
 import SeoHead from '../components/seo/SeoHead.astro';
 import '../styles/global.css';
 import { withBase } from '../lib/urls';
@@ -24,7 +25,7 @@ const { title, description = SITE_DESCRIPTION, canonicalPath, noindex = false, s
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <SeoHead title={title} description={description} canonicalPath={canonicalPath} noindex={noindex || sampleMode} />
     <slot name="head" />
-    <noscript><style>.theme-label { display: none !important; }</style></noscript>
+    <noscript><style>.theme-label, [data-newsletter-open] { display: none !important; }</style></noscript>
     <script is:inline>
       try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (_) {}
     </script>
@@ -35,6 +36,7 @@ const { title, description = SITE_DESCRIPTION, canonicalPath, noindex = false, s
     <Header />
     <main id="main-content"><slot /></main>
     <Footer />
+    <NewsletterDialog />
     <script>
       import '../scripts/theme';
     </script>

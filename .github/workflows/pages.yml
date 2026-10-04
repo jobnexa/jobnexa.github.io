@@ -45,6 +45,7 @@ jobs:
         env:
           SITE_URL: ${{ github.event_name == 'pull_request' && 'http://localhost:4321' || vars.SITE_URL || steps.pages-url.outputs.origin }}
           BASE_PATH: ${{ github.event_name == 'pull_request' && '/' || vars.BASE_PATH || steps.pages-url.outputs.base_path || '/' }}
+          PUBLIC_NEWSLETTER_FORM_URL: ${{ vars.NEWSLETTER_FORM_URL }}
       - name: Verify static artifact
         run: |
           test -f dist/index.html

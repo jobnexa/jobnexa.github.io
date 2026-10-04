@@ -1,0 +1,28 @@
+---
+import { newsletterFormAction } from '../../lib/newsletter';
+import '../../styles/newsletter.css';
+const action = newsletterFormAction(import.meta.env.PUBLIC_NEWSLETTER_FORM_URL);
+const connected = Boolean(action);
+const provider = connected ? new URL(action).hostname : '';
+---
+<dialog class="newsletter-dialog" id="newsletter-dialog" aria-labelledby="newsletter-title" aria-describedby="newsletter-description" data-connected={String(connected)}>
+  <div class="newsletter-decoration" aria-hidden="true"><span></span><span></span><span></span></div>
+  <button class="newsletter-close" type="button" data-newsletter-close aria-label="Close email signup"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg></button>
+  <div class="newsletter-content">
+    <div class="newsletter-icon" aria-hidden="true"><svg viewBox="0 0 32 32" width="32" height="32"><rect x="5" y="8" width="22" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m6 10 10 8 10-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span></span></div>
+    <p class="newsletter-eyebrow">A LITTLE HEAD START</p>
+    <h2 id="newsletter-title">Your next opportunity,<br />in your inbox.</h2>
+    <p id="newsletter-description">Enter your email to receive the latest job updates from JobNexa.</p>
+    {!connected && <p class="newsletter-availability" id="newsletter-availability" role="status"><span aria-hidden="true"></span>Email alerts are coming soon. Signup is not available yet.</p>}
+    <form class="newsletter-form" id="newsletter-form" action={connected ? action : undefined} method="post" target="_blank" {...{ rel: 'noopener noreferrer' }}>
+      <label for="newsletter-email">Email address</label>
+      <div class="newsletter-input-wrap"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><input id="newsletter-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby={connected ? 'newsletter-privacy' : 'newsletter-availability newsletter-privacy'} /></div>
+      {connected && <label class="newsletter-consent"><input type="checkbox" name="consent" value="job-updates" required /><span>I agree to receive job updates from JobNexa.</span></label>}
+      <button class="newsletter-submit" type="submit" disabled={!connected}>Notify me <span aria-hidden="true">↗</span></button>
+      <p class="newsletter-privacy" id="newsletter-privacy">{connected ? `Your email is sent to ${provider} for JobNexa job updates. Complete registration on the page that opens.` : 'No email is saved or sent while signup is unavailable.'}</p>
+      <p class="newsletter-status" id="newsletter-status" role="status" hidden></p>
+    </form>
+    <button class="newsletter-skip" type="button" data-newsletter-close>Skip for now <span aria-hidden="true">→</span></button>
+  </div>
+</dialog>
+<script>import '../../scripts/newsletter';</script>
