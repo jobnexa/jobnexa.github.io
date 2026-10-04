@@ -6,7 +6,7 @@ const path = Astro.url.pathname;
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href={withBase('/')} aria-label={`${SITE_NAME} home`}>
-      <span class="brand-mark" aria-hidden="true">W</span><span>{SITE_NAME}</span>
+      <span class="brand-mark" aria-hidden="true">J</span><span>{SITE_NAME}</span>
     </a>
     <div class="header-actions">
       <nav class="nav-links" aria-label="Main navigation">
@@ -21,6 +21,7 @@ const path = Astro.url.pathname;
           <option value="dark">Dark</option>
         </select>
       </label>
+      <button class="header-signup" type="button" data-newsletter-open>Sign Up</button>
     </div>
   </div>
 </header>
