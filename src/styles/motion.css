@@ -1,0 +1,152 @@
+/* Motion is opt-in. Without JavaScript (or before setup), content stays visible. */
+html[data-motion-ready] .motion-reveal {
+  opacity: 0;
+  translate: 0 24px;
+  transition:
+    opacity 720ms cubic-bezier(.18, .7, .24, 1),
+    translate 720ms cubic-bezier(.18, .7, .24, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html[data-motion-ready] .motion-reveal.is-visible,
+html[data-motion-ready] .motion-reveal:focus-within {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* The individual translate property keeps existing transform effects intact. */
+html[data-motion-ready] .motion-reveal.job-card {
+  translate: 0 18px;
+}
+
+html[data-motion-ready] .motion-reveal.job-card.is-visible,
+html[data-motion-ready] .motion-reveal.job-card:focus-within {
+  translate: 0 0;
+}
+
+html[data-motion-ready] .motion-reveal:focus-within {
+  transition: none;
+}
+
+/* Scroll artwork independently of the orbit's existing transform and animation. */
+.hero-orbit {
+  translate: 0 var(--orbit-scroll, 0px);
+  transition: translate 120ms linear;
+}
+
+/* JS adds this only to buttons and link-like controls chosen for feedback. */
+.is-pressing {
+  filter: brightness(.89) saturate(1.08);
+  transition: filter 110ms ease-out;
+}
+
+.has-click-ripple {
+  isolation: isolate;
+}
+
+.ripple-relative { position: relative; }
+
+.click-ripple-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.click-ripple {
+  position: absolute;
+  z-index: 1;
+  left: var(--ripple-x, 50%);
+  top: var(--ripple-y, 50%);
+  width: var(--ripple-size, 120px);
+  height: var(--ripple-size, 120px);
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  translate: -50% -50%;
+  scale: 0;
+  animation: click-ripple-expand 560ms cubic-bezier(.17, .67, .3, 1) forwards;
+}
+
+@keyframes click-ripple-expand {
+  0% { opacity: .24; scale: 0; }
+  65% { opacity: .13; }
+  100% { opacity: 0; scale: 1; }
+}
+
+.scroll-progress {
+  position: fixed;
+  z-index: 1000;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, #dfff79 0%, #6ed8e4 45%, #5479ff 100%);
+  box-shadow: 0 1px 7px rgba(34, 71, 185, .25);
+  pointer-events: none;
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: left center;
+  transition: transform 90ms linear;
+}
+
+.back-to-top {
+  position: fixed;
+  z-index: 50;
+  right: clamp(16px, 2.5vw, 34px);
+  bottom: clamp(16px, 2.5vw, 34px);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: var(--shadow);
+  font-size: 1.15rem;
+  font-weight: 750;
+  line-height: 1;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  translate: 0 12px;
+  transition:
+    opacity 230ms ease,
+    translate 230ms ease,
+    visibility 230ms ease,
+    background 180ms ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  translate: 0 0;
+}
+
+.back-to-top:hover {
+  background: var(--accent-soft);
+}
+
+@media (max-width: 590px) {
+  .back-to-top { right: 15px; bottom: 15px; width: 44px; height: 44px; border-radius: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-motion-ready] .motion-reveal,
+  html[data-motion-ready] .motion-reveal.is-visible,
+  html[data-motion-ready] .motion-reveal.job-card,
+  html[data-motion-ready] .motion-reveal.job-card.is-visible {
+    opacity: 1 !important;
+    translate: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  .is-pressing { filter: none; transition: none; }
+  .click-ripple { display: none !important; animation: none; }
+  .scroll-progress { transition: none; }
+  .back-to-top { transition: none; translate: none; }
+  .hero-orbit { translate: none !important; transition: none !important; }
+}
