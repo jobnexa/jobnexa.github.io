@@ -1,0 +1,291 @@
+/* The homepage hero owns the first viewport; jobs begin at #opportunities. */
+.dashboard-home {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+}
+
+.dashboard-home .dashboard-head {
+  position: relative;
+  display: grid;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100svh - var(--site-header-height, 79px));
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 78% 46%, rgba(99, 145, 255, .45), transparent 34%),
+    radial-gradient(circle at 18% 108%, rgba(53, 108, 227, .65), transparent 44%),
+    linear-gradient(114deg, #142a69 3%, #2247ad 55%, #2e65d4 100%);
+}
+
+.dashboard-home .dashboard-head::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 48%;
+  background: radial-gradient(circle, rgba(255,255,255,.25) 1px, transparent 1.7px) 0 0 / 29px 29px;
+  mask-image: linear-gradient(90deg, transparent, #000 56%);
+  opacity: .34;
+  pointer-events: none;
+}
+
+.dashboard-home .dashboard-head::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(58vw, 760px);
+  aspect-ratio: 1;
+  right: -10%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 50%;
+  box-shadow: 0 0 0 72px rgba(255,255,255,.035), 0 0 0 73px rgba(255,255,255,.13), 0 0 0 148px rgba(255,255,255,.025);
+  pointer-events: none;
+}
+
+.landing-hero-inner.container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 70px);
+  min-height: calc(100svh - var(--site-header-height, 79px));
+  padding-block: clamp(58px, 9vh, 104px) clamp(98px, 12vh, 124px);
+}
+
+.dashboard-home .dashboard-head-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.dashboard-home .dashboard-head h1 {
+  max-width: 760px;
+  font-size: clamp(3rem, 5.2vw, 5.15rem);
+  line-height: 1.035;
+  text-wrap: balance;
+}
+
+.dashboard-home .dashboard-intro {
+  max-width: 560px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 27px;
+}
+
+.dashboard-home .dashboard-head .skills-edit {
+  margin-top: 0;
+}
+
+.landing-browse.button {
+  gap: 8px;
+  min-height: 45px;
+  padding-inline: 22px;
+  border: 1px solid #dfff79;
+  background: #dfff79;
+  color: #17366d;
+  box-shadow: 0 12px 30px rgba(12,34,80,.18);
+}
+
+.landing-browse.button:hover {
+  background: #f0ffb9;
+}
+
+.hero-briefcase {
+  position: relative;
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: min(100%, 510px);
+  min-width: 0;
+  aspect-ratio: 1 / .9;
+  pointer-events: none;
+  translate: 0 var(--briefcase-scroll, 0px);
+  transition: translate 130ms linear;
+}
+
+.hero-briefcase::before {
+  content: '';
+  position: absolute;
+  inset: 11%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(169,218,255,.28), rgba(169,218,255,.04) 62%, transparent 72%);
+  filter: blur(12px);
+}
+
+.hero-briefcase::after {
+  content: '';
+  position: absolute;
+  top: 11%;
+  right: 8%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #dfff79;
+  box-shadow: 0 0 0 9px rgba(223,255,121,.12);
+}
+
+.hero-briefcase .briefcase-art {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  animation: landing-briefcase-float 6.8s ease-in-out infinite;
+}
+
+.hero-briefcase .briefcase-art svg {
+  display: block;
+  width: 100%;
+  max-height: min(58vh, 560px);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 24px 28px rgba(8, 29, 88, .22));
+}
+
+@keyframes landing-briefcase-float {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+.hero-scroll-cue {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  color: rgba(255,255,255,.88);
+  font-size: .76rem;
+  font-weight: 760;
+  letter-spacing: .13em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.hero-scroll-cue:hover { color: #dfff79; }
+.hero-scroll-cue svg { flex: 0 0 auto; width: 17px; height: 17px; animation: landing-scroll-nudge 2.3s ease-in-out infinite; }
+
+@keyframes landing-scroll-nudge {
+  0%, 100% { transform: translateY(-3px); }
+  50% { transform: translateY(4px); }
+}
+
+.job-discovery.container {
+  padding-top: clamp(48px, 6vw, 78px);
+  padding-bottom: 78px;
+  scroll-margin-top: 24px;
+}
+
+.job-discovery:focus { outline: none; }
+
+/* The /jobs/ route keeps its compact hero while using the same illustration. */
+.dashboard:not(.dashboard-home) .dashboard-head > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  width: 100%;
+}
+
+.dashboard:not(.dashboard-home) .dashboard-head-content { flex: 1 1 auto; }
+.dashboard:not(.dashboard-home) .hero-briefcase { flex: 0 0 min(34%, 320px); width: min(34%, 320px); aspect-ratio: 1 / .82; }
+.dashboard:not(.dashboard-home) .hero-briefcase .briefcase-art svg { max-height: 255px; }
+
+/* Navigation uses one type scale; weight and color still mark hierarchy. */
+.site-header .brand,
+.site-header .nav-links a,
+.site-header .theme-label,
+.site-header .theme-select,
+.site-header .header-signup {
+  font-family: Aptos, 'Segoe UI', Inter, ui-sans-serif, Arial, sans-serif;
+  font-size: .94rem;
+}
+
+.site-header .brand { font-weight: 820; letter-spacing: -.035em; }
+.site-header .nav-links a { font-weight: 660; }
+.site-header .theme-label, .site-header .theme-select { font-weight: 630; }
+.site-header .header-signup { font-weight: 760; }
+
+@media (max-width: 980px) {
+  .landing-hero-inner.container { grid-template-columns: minmax(0,1.1fr) minmax(260px,.9fr); gap: 14px; }
+  .hero-briefcase { width: min(100%, 420px); }
+  .dashboard-home .dashboard-head h1 { font-size: clamp(2.8rem, 5.7vw, 4.3rem); }
+}
+
+@media (max-width: 760px) {
+  .site-header .brand,
+  .site-header .nav-links a,
+  .site-header .theme-label,
+  .site-header .theme-select,
+  .site-header .header-signup { font-size: .85rem; }
+  .site-header .theme-label span { display: inline; }
+  .landing-hero-inner.container { grid-template-columns: minmax(0,1fr) minmax(220px,.76fr); }
+  .hero-briefcase { width: min(100%, 330px); }
+  .dashboard-home .dashboard-head h1 { font-size: clamp(2.45rem, 6.2vw, 3.6rem); }
+}
+
+@media (max-width: 590px) {
+  .site-header .nav-links { gap: 8px; }
+  .site-header .theme-label { gap: 4px; }
+  .site-header .theme-select { max-width: 82px; padding-inline: 5px; }
+  .dashboard-home .dashboard-head {
+    min-height: calc(100svh - var(--site-header-height, 110px));
+  }
+  .landing-hero-inner.container {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 8px;
+    min-height: calc(100svh - var(--site-header-height, 110px));
+    padding-block: 38px 89px;
+  }
+  .dashboard-home .dashboard-head-content { max-width: 100%; }
+  .dashboard-home .dashboard-head h1 { max-width: 530px; margin-block: 12px; font-size: clamp(2.3rem, 10vw, 3.3rem); }
+  .dashboard-home .dashboard-intro { max-width: 520px; font-size: .92rem; }
+  .hero-actions { margin-top: 18px; gap: 8px; }
+  .hero-actions .button { min-height: 42px; padding: 9px 14px; font-size: .8rem; }
+  .hero-briefcase { justify-self: center; width: min(72vw, 270px); aspect-ratio: 1 / .78; }
+  .hero-briefcase .briefcase-art svg { max-height: 29svh; }
+  .hero-scroll-cue { bottom: 16px; font-size: .69rem; }
+  .dashboard-home .dashboard-head::after { width: 100vw; right: -48%; opacity: .55; }
+  .job-discovery.container { padding-top: 49px; padding-bottom: 54px; }
+  .dashboard:not(.dashboard-home) .dashboard-head { position: relative; min-height: 260px; }
+  .dashboard:not(.dashboard-home) .dashboard-head > div:first-child { display: block; }
+  .dashboard:not(.dashboard-home) .dashboard-head-content { position: relative; z-index: 2; }
+  .dashboard:not(.dashboard-home) .hero-briefcase { position: absolute; right: -18px; bottom: -15px; width: 205px; opacity: .3; }
+  .dashboard:not(.dashboard-home) .hero-briefcase .briefcase-art svg { max-height: 200px; }
+}
+
+@media (max-width: 390px) {
+  .site-header .nav-links { gap: 7px; }
+  .site-header .theme-select { max-width: 76px; }
+  .dashboard-home .dashboard-head h1 { font-size: clamp(2.25rem, 10vw, 2.75rem); }
+  .hero-briefcase { width: min(68vw, 230px); }
+}
+
+@media (max-height: 620px) and (min-width: 591px) {
+  .landing-hero-inner.container { padding-block: 42px 85px; }
+  .hero-briefcase .briefcase-art svg { max-height: 66vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-briefcase { translate: none !important; transition: none !important; }
+  .hero-briefcase .briefcase-art, .hero-scroll-cue svg { animation: none !important; transform: none !important; }
+  .hero-scroll-cue { transition: none !important; }
+}
